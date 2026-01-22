@@ -5,7 +5,7 @@ function Footer(){
          
         <footer className="footer bg-dark text-white py-4">
             <div className ="footer-content">
-            <p>Eat Your Feelings</p>
+            <p>DreamWorld Consumables </p>
             </div>
             
         </footer>

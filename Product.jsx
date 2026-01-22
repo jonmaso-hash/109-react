@@ -1,9 +1,12 @@
 import "./Product.css";
 import QuantityPicker from "./QuantityPicker";
-import {useState}from "react";
+import {useContext, useState}from "react";
+import GlobalContext from "../state/globalContext";
 
 function Product(props){
 const[quantity, setQuantity] = useState(1);
+// const user = useContext(GlobalContext).user
+const gloablAdd = useContext(GlobalContext).addProductToCart
 
     function handleQuantityChange(quantity){
         console.log("Quantity changed to: ", quantity);
@@ -13,6 +16,16 @@ const[quantity, setQuantity] = useState(1);
     function getTotal(){
         let total = props.data.price * quantity;
         return total.toFixed(2);
+    }
+
+    function onAdd(){
+        console.log("Adding product...")
+        console.log(props.data)
+
+        let fixedProduct = {...props.data}
+        fixedProduct.quantity = quantity
+
+        gloablAdd(fixedProduct)
     }
 
     return(
@@ -25,13 +38,14 @@ const[quantity, setQuantity] = useState(1);
             <label>{props.data.price.toFixed(2)}</label>
             <div>
                 <label>Total: </label>
-                <labe>$</labe>
+                <label>$</label>
                  <label>{getTotal()}</label>
             </div>
            
             
         </div>
         <QuantityPicker onChange={handleQuantityChange}/>
+        <button className="btn btn-dark mt-4" onClick={onAdd}>Add Product</button>
         </div>
             
     );

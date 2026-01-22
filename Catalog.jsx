@@ -3,6 +3,9 @@ import "./Catalog.css";
 import { useEffect, useState } from "react";
 import DataService from "../services/dataService";
 
+
+
+
 function Catalog(){
     const [products, setProducts] = useState([]); //to hold products
     const [categories, setCategories] = useState([]); // hold the categories
@@ -50,6 +53,9 @@ function Catalog(){
     <h1>Products</h1>
     <div className="btn-border">
     <button className="btn btn-dark" onClick={clearFilter}>All</button>
+    
+   
+ 
    
     {categories.map(cat => <button key={cat} onClick={()=>filter(cat)}>{cat}</button>)}
     {
@@ -63,5 +69,6 @@ function Catalog(){
 </div>
     );
 }
+
 
 export default Catalog;

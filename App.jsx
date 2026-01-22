@@ -2,6 +2,7 @@ import{BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import About from './pages/About'
 import Catalog from './pages/Catalog';
+import Cart from './pages/Cart'
 import Home from './pages/Home';
 import NotFound from './pages/NotFound' 
 import Admin from './pages/Admin'
@@ -23,16 +24,16 @@ function App() {
       <div>
          <Navbar/>
 
-         <main className='bg-light py-4 px-5'>
+         <main className='bg-sucess py-4 px-5'>
           <Routes>
           <Route path='/' element={<Home/>} ></Route>
           <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/about' element={<About/>}></Route>
           <Route path= '/contact' element={<Contact/>}></Route>
-           <Route path="/admin" element = {<Admin/>}></Route>
+          <Route path="/admin" element = {<Admin/>}></Route>
+          <Route path ="/cart" element={<Cart/>}></Route>
           <Route path="*" element={<NotFound/>}></Route>
          
-          
           </Routes>
          </main>    
 

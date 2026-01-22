@@ -1,16 +1,27 @@
 import { useContext } from "react";
 import "./Navbar.css"; 
 import {Link} from 'react-router-dom'
+import { IconShoppingCart } from '@tabler/icons-react';
 import GlobalContext from '../state/globalContext';
 
 function Navbar(){
   const user = useContext(GlobalContext).user 
+  const cart = useContext(GlobalContext).cart
+
+  function getTotalItems(){
+    let sum = 0
+
+    for(let i=0; i < cart.length; i++){
+      sum = sum + cart[i].quantity
+    }
+    return sum
+  }
 
     return(
      <nav className="navbar navbar-expand-lg bg-body-tertiary">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">
-      "Eat Your Feelings" Online Store
+      DreamWorld Consumables 
     </a>
     <button
       className="navbar-toggler"
@@ -56,8 +67,14 @@ function Navbar(){
         </li>
       </ul>
 
-      <div>
+      <div className="d-flex align-items-center gap-2">
         <div className="text-black">{user.name}</div>
+
+        <Link to ={"/cart"}>
+         <IconShoppingCart stroke={2} />
+        Cart {getTotalItems()}
+        
+        </Link>
       </div>
 
 
